@@ -68,7 +68,7 @@ public class ControladorTecnicos {
             return true;
 
         } catch (SQLException ex) {
-            System.out.println("Error al añadir");
+            System.out.println("Error al añadir"+ex);
         }
         return false;
     }
@@ -154,7 +154,7 @@ public class ControladorTecnicos {
 
             while (datos.next()) {
 
-                tecnicosListado.add(new Tecnico(datos.getInt(2), datos.getString(3), datos.getDate(4), datos.getInt(5), datos.getString(6), datos.getDouble(7)));
+                tecnicosListado.add(new Tecnico(datos.getInt(2), datos.getString(3), datos.getDate(4), datos.getInt(5), datos.getString(6), datos.getInt(7)));
 
             }
             JOptionPane.showMessageDialog(null, "Lista se dio con exito");

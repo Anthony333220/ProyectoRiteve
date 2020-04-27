@@ -1,7 +1,7 @@
 package Clases;
 
-import java.sql.Date;
-import java.time.Year;
+import java.util.Date;
+
 
 /**
  *
@@ -30,12 +30,20 @@ public class Vehiculo {
     public Vehiculo() {
 
         this.placa = 0;
-        this.marca =null;
+        this.marca = null;
         this.modelo = null;
         this.anio = null;
         this.fechaInscripcion = null;
         this.cedula = 0;
-        this.nombrePropietario =null;
+        this.nombrePropietario = null;
+
+    }
+
+    public boolean comprobar() {
+
+        return this.placa > 0
+                && this.cedula > 0 && this.nombrePropietario != null
+                && this.marca != null && this.fechaInscripcion != null;
 
     }
 
@@ -87,7 +95,7 @@ public class Vehiculo {
         return cedula;
     }
 
-    public void setCedula(int  cedula) {
+    public void setCedula(int cedula) {
         this.cedula = cedula;
     }
 
@@ -99,5 +107,4 @@ public class Vehiculo {
         this.nombrePropietario = nombrePropietario;
     }
 
-    
 }

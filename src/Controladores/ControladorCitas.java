@@ -52,12 +52,12 @@ public class ControladorCitas {
 
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
 
-            sentencias.execute("insert into citas values(null,'" + f.format(cita.getFecha()) + "','" + cita.getHora() + "','" + cita.getVehiculo().getPlaca() + "','" + cita.getStatus() + "')");
+            sentencias.execute("insert into citas values(null,'" +f.format(cita.getFecha())+"','"+cita.getHora()+"','"+cita.getVehiculo().getPlaca()+"','"+cita.getVehiculo().getMarca()+"','"+cita.getVehiculo().getModelo()+"','"+cita.getVehiculo().getAnio()+"','"+cita.getVehiculo().getFechaInscripcion()+"','"+cita.getVehiculo().getCedula()+"','"+cita.getVehiculo().getNombrePropietario()+"','" +cita.getStatus()+"')");
             return true;
 
         } catch (SQLException ex) {
-            System.out.println("Error al añadir");
-            System.out.println(ex);
+            System.out.println("Error al añadir devido a "+ex);
+           
         }
         return false;
     }
@@ -178,23 +178,23 @@ public class ControladorCitas {
     }
 
     //valida que exista un cliente para poder agregar una cita
-    public boolean ValidarFK(Cita cita) {
-
-        try {
-            this.datos = this.sentencias.executeQuery("select * from clientes where placa=" + cita.getVehiculo().getPlaca());
-
-            if (datos.next()) {
-                return true;
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Error al validarFK");
-
-        }
-
-        return false;
-
-    }
+//    public boolean ValidarFK(Cita cita) {
+//
+//        try {
+//            this.datos = this.sentencias.executeQuery("select * from clientes where placa=" + cita.getVehiculo().getPlaca());
+//
+//            if (datos.next()) {
+//                return true;
+//            }
+//
+//        } catch (SQLException ex) {
+//            System.out.println("Error al validarFK");
+//
+//        }
+//
+//        return false;
+//
+//    }
 
     /**
      * utiliza la fecha del parametro cita y la compara con la fecha actual

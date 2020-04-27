@@ -1,5 +1,3 @@
-
-
 package Vistas;
 
 import Archivo.Configuracion;
@@ -17,15 +15,14 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     private Usuario usuario;
     private ControladorUsuarios cu;
 
-  //private static Configuraciones conexion=new Configuraciones();
-  
-  
+    //private static Configuraciones conexion=new Configuraciones();
     public FrmCrearUsuarios() {
         cu = new ControladorUsuarios();
         initComponents();
+        usuario = null;
+        cu = new ControladorUsuarios();
 
     }
-       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -56,6 +53,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         combox = new javax.swing.JComboBox<>();
         txtDate = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -129,6 +127,13 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("Opciones");
 
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -167,7 +172,8 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                     .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnGuardar)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -217,7 +223,9 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cajaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -244,14 +252,13 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
         usuario = new Usuario();
-        try{
-        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
-        System.out.println("si lee el try");
-        } catch(NumberFormatException e){
-            System.out.println("error"+e.getMessage());
-            
-            
+        try {
+            usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+            usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+            System.out.println("si lee el try");
+        } catch (NumberFormatException e) {
+            System.out.println("error" + e.getMessage());
+
         }
 
         usuario.setNombre(this.cajaNombre.getText());
@@ -265,7 +272,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         if (cu.agregarUsuario(usuario)) {
 
             JOptionPane.showMessageDialog(this, "Usuario agregado");
-            usuario=null;
+            usuario = null;
         }
 
 
@@ -289,15 +296,14 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-         usuario = new Usuario();
-        try{
-        usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-        usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
-        System.out.println("si lee el try");
-        } catch(NumberFormatException e){
-            System.out.println("error"+e.getMessage());
-            
-            
+        usuario = new Usuario();
+        try {
+            usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+            usuario.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+            System.out.println("si lee el try");
+        } catch (NumberFormatException e) {
+            System.out.println("error" + e.getMessage());
+
         }
 
         usuario.setNombre(this.cajaNombre.getText());
@@ -311,15 +317,49 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
         if (cu.actualizar(usuario)) {
 
             JOptionPane.showMessageDialog(this, "Usuario Modificado");
-            usuario=null;
+            usuario = null;
         }
 
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!this.cajaCedula.getText().equals("")) {
+          try{
+            usuario = new Usuario();
+            int cedula = Integer.parseInt(this.cajaCedula.getText());
+            usuario.setCedula(cedula);
+
+            if (cu.buscarUsuario(usuario) != null) {
+
+                usuario = cu.buscarUsuario(usuario);
+                this.cajaCedula.setEditable(true);
+                this.cajaCedula.setText(String.valueOf(usuario.getCedula()));
+                this.cajaCedula.setEditable(false);
+                this.cajaNombre.setText(usuario.getNombre());
+                this.txtDate.setDate(usuario.getFechaNacimiento());
+                this.cajaTelefono.setText(String.valueOf(usuario.getTelefono()));
+                this.cajaEmail.setText(usuario.getCorreoElectronico());
+                this.cajaUsuario.setText(usuario.getNombreUsuario());
+                this.combox.setSelectedItem(usuario.getTipoUsuario());
+//                this.jPasswordField1.setEditable(true);
+//                this.jPasswordField1.setText(usuario.getContraseña());
+//                this.jPasswordField1.setEditable(false);
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario no encontrado");
+                usuario = null;
+            }
+
+          }catch(Exception e){
+                 JOptionPane.showMessageDialog(this, "error devido a "+e);
+             
+          }
+        }
+        
+
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public String concatenar(char pass[]) {
         String pass2 = "";
@@ -348,8 +388,6 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
 
     }
 
-  
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Corre;
@@ -363,6 +401,7 @@ public class FrmCrearUsuarios extends javax.swing.JInternalFrame {
     public javax.swing.JTextField cajaTelefono;
     public javax.swing.JTextField cajaUsuario;
     private javax.swing.JComboBox<String> combox;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

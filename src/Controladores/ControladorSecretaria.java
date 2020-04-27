@@ -49,7 +49,7 @@ public class ControladorSecretaria {
             return true;
 
         } catch (SQLException ex) {
-            System.out.println("no se creo secretaria");
+            System.out.println("no se creo secretaria devido a "+ex.getMessage());
         }
         return false;
     }

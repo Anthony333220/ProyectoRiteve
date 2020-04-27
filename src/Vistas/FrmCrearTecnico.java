@@ -6,6 +6,7 @@
 package Vistas;
 
 import Clases.Tecnico;
+import Clases.Usuario;
 import Controladores.ControladorTecnicos;
 import javax.swing.JOptionPane;
 
@@ -23,19 +24,16 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
 
         initComponents();
     }
-    
-    
-    
-    public void LimpiarCajas(){
+
+    public void LimpiarCajas() {
         cajaCedula.setText("");
-          cajaNombre.setText("");
-          cajaCorreo.setText("");
-          cajaSalario.setText("");
-          
-          cajaNombre.setText("");
-          cajaTelefono.setText("");
-        
-        
+        cajaNombre.setText("");
+        cajaCorreo.setText("");
+        cajaSalario.setText("");
+
+        cajaNombre.setText("");
+        cajaTelefono.setText("");
+
     }
 
     /**
@@ -51,7 +49,6 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblCalcular = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         cajaNombre = new javax.swing.JTextField();
         cajaCedula = new javax.swing.JTextField();
@@ -64,6 +61,7 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         cajaSalario = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -78,20 +76,13 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Telefono");
 
-        lblCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        lblCalcular.setText("Calcular Salario");
-        lblCalcular.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCalcularMouseClicked(evt);
-            }
-        });
-
         jLabel7.setText("Fecha Nacimiento");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Crear Tecnicos");
 
-        btnCalcular.setText("ir");
+        btnCalcular.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnCalcular.setText("Calcular Salario");
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCalcularActionPerformed(evt);
@@ -108,10 +99,19 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Salario");
 
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton2.setText("Buscar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -120,31 +120,26 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(192, 192, 192)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)
+                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCalcular))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(81, 81, 81)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 118, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -156,33 +151,37 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
                             .addComponent(cajaCedula)
                             .addComponent(cajaTelefono)
                             .addComponent(cajaCorreo)
-                            .addComponent(cajaSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34))
+                            .addComponent(cajaSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
+                            .addComponent(cajaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(21, 21, 21)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cajaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cajaTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -190,27 +189,19 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cajaCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(cajaSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(lblCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                .addGap(61, 61, 61)
+                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblCalcularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCalcularMouseClicked
-
-
-    }//GEN-LAST:event_lblCalcularMouseClicked
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         this.setVisible(false);
@@ -221,60 +212,106 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+//
+//        if (cajaNombre.getText().isEmpty() || cajaCedula.getText().isEmpty() || cajaCorreo.getText().isEmpty() || cajaTelefono.getText().isEmpty()) {
+//            JOptionPane.showMessageDialog(this, "Ingrese los datos respectivos");
 
-        if(cajaNombre.getText().isEmpty()||cajaCedula.getText().isEmpty()||cajaCorreo.getText().isEmpty()||cajaTelefono.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this,"Ingrese los datos respectivos");
-            
-            
-        }else{
-            try{
-            tecnico=new Tecnico();
+        tecnico = new Tecnico();
+        try {
+            tecnico = new Tecnico();
             tecnico.setCedula(Integer.parseInt(cajaCedula.getText()));
             tecnico.setNombre(this.cajaNombre.getText());
             tecnico.setFechaNacimiento(this.txtFecha.getDate());
             tecnico.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
             tecnico.setCorreoElectrónico(this.cajaCorreo.getText());
-            tecnico.setSalario(Double.parseDouble(this.cajaSalario.getText()));
-            if(ctlt.agregarTecnico(tecnico)){
-                
-                  JOptionPane.showMessageDialog(this,"Se creo un Tecnico");
-                  tecnico=null;
-                  LimpiarCajas();
-            
-            }else{
-                
-                  JOptionPane.showMessageDialog(this,"No se creo tecnico");
-            
+            tecnico.setSalario((int) Double.parseDouble(this.cajaSalario.getText()));
+            if (ctlt.agregarTecnico(tecnico)) {
+
+                JOptionPane.showMessageDialog(this, "Se creo un Tecnico");
+                tecnico = null;
+                LimpiarCajas();
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "No se creo tecnico");
+
             }
-            
-            
-            }catch(Exception e){
-                
-                   JOptionPane.showMessageDialog(this,"No se logro crear Tecnico deviso a "+e.getMessage());
-            
-            }
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(this, "No se logro crear Tecnico deviso a " + e.getMessage());
+            System.out.println(e);
+
         }
-        
-        
-        
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-            
-           tecnico=new Tecnico();
-           cajaNombre.setText(this.tecnico.getNombre());
-           
-           
-            
-        }catch(Exception e){
-            
-            
-            JOptionPane.showMessageDialog(this,"ERRO DE BUSCAR INFORMACION");
+
+        if (!this.cajaCedula.getText().equals("")) {
+            try {
+                tecnico = new Tecnico();
+                int cedula = Integer.parseInt(this.cajaCedula.getText());
+                tecnico.setCedula(cedula);
+
+                if (ctlt.buscarTecnico(tecnico) != null) {
+
+                    tecnico = ctlt.buscarTecnico(tecnico);
+                    this.cajaCedula.setEditable(true);
+                    this.cajaCedula.setText(String.valueOf(tecnico.getCedula()));
+                    this.cajaCedula.setEditable(false);
+                    this.cajaNombre.setText(tecnico.getNombre());
+                    this.txtFecha.setDate(tecnico.getFechaNacimiento());
+                    this.cajaTelefono.setText(String.valueOf(tecnico.getTelefono()));
+                    this.cajaCorreo.setText(tecnico.getCorreoElectrónico());
+                    double salario = Double.parseDouble(this.cajaSalario.getText());
+                    tecnico.setSalario(salario);
+                    // int id=Integer.parseInt(this.cajaId.getText());
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "tecnico no encontrado");
+                    tecnico = null;
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, "error devido a " + e);
+
+            }
         }
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        //modificvar
+        tecnico = new Tecnico();
+        try {
+            tecnico.setCedula(Integer.parseInt(this.cajaCedula.getText()));
+            tecnico.setTelefono(Integer.parseInt(this.cajaTelefono.getText()));
+              tecnico.setSalario(Double.parseDouble(this.cajaSalario.getText()));
+
+        } catch (Exception e) {
+            System.out.println("no logro leer los valores enteros" + e.getMessage());
+
+        }
+
+        tecnico.setNombre(this.cajaNombre.getText());
+        tecnico.setCorreoElectronico(this.cajaCorreo.getText());
+        //  tecnico.setTelefono(Integer.parseInt(cajaTelefono.getText()));
+      
+        //  tecnico.setTipoUsuario((String) this.combox.getSelectedItem());
+        tecnico.setFechaNacimiento(this.txtFecha.getDate());
+
+        System.out.println("antes de añadir");
+        if (ctlt.actualizarTecnicos(tecnico)) {
+
+            JOptionPane.showMessageDialog(this, "Tecnico fue Modificado");
+            tecnico = null;
+        }
+
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -286,6 +323,7 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cajaTelefono;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -293,7 +331,6 @@ public class FrmCrearTecnico extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel lblCalcular;
     private com.toedter.calendar.JDateChooser txtFecha;
     // End of variables declaration//GEN-END:variables
 }

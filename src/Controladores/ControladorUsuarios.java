@@ -66,9 +66,11 @@ public class ControladorUsuarios {
                 Usuario usuarioSiguiente = new Usuario();
                 usuarioSiguiente.setCedula(datos.getInt(2));
                 usuarioSiguiente.setNombre(datos.getString(3));
-                usuarioSiguiente.setFechaNacimiento(datos.getDate(4));
-                usuarioSiguiente.setTelefono(datos.getInt(5));
-                usuarioSiguiente.setCorreoElectronico(datos.getString(6));
+                usuarioSiguiente.setTelefono(datos.getInt(4));
+                usuarioSiguiente.setCorreoElectronico(datos.getString(5));
+                usuarioSiguiente.setFechaNacimiento(datos.getDate(6));
+                
+                
                 usuarioSiguiente.setNombreUsuario(datos.getString(7));
                 usuarioSiguiente.setContrasena(datos.getString(8));
                 usuarioSiguiente.setTipoUsuario(datos.getString(9));

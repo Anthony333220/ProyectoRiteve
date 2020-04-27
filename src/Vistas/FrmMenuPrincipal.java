@@ -299,6 +299,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jMenu11.setText("Mostrar");
 
         jMenuItem20.setText("Citas");
+        jMenuItem20.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem20ActionPerformed(evt);
+            }
+        });
         jMenu11.add(jMenuItem20);
 
         jMenuItem21.setText("Reviciones");
@@ -370,7 +375,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
 
-        FrmCrearVehiculo frmV = new FrmCrearVehiculo();
+        FrmCrearVehiculos frmV = new FrmCrearVehiculos();
         escritorio2.add(frmV);
         frmV.show();
 
@@ -412,7 +417,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
 
-        FrmCrearVehiculo frmV = new FrmCrearVehiculo();
+        FrmCrearVehiculos frmV = new FrmCrearVehiculos();
         escritorio2.add(frmV);
         frmV.show();
     }//GEN-LAST:event_jMenuItem14ActionPerformed
@@ -460,6 +465,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
        escritorio2.add(f);
        f.show();
     }//GEN-LAST:event_jMenuItem22ActionPerformed
+
+    private void jMenuItem20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem20ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem20ActionPerformed
 
     /**
      * @param args the command line arguments

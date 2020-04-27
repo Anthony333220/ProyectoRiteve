@@ -5,7 +5,9 @@
  */
 package Vistas;
 
+import Clases.Cita;
 import Clases.Usuario;
+import Controladores.ControladorCitas;
 import Controladores.ControladorUsuarios;
 import javax.swing.JOptionPane;
 
@@ -17,12 +19,14 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
     private ControladorUsuarios ctu;
     private Usuario usuario;
+    private ControladorCitas ctlc;
+    private Cita cita;
 
     public FrmEliminarCita() {
         initComponents();
         
         
-        ctu=new ControladorUsuarios();
+        ctlc=new ControladorCitas();
         
         
         
@@ -31,7 +35,7 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
     public void limpiarCajas() {
 
-        cajaCedula.setText("");
+        cajaId.setText("");
 
     }
 
@@ -41,8 +45,9 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cajaCedula = new javax.swing.JTextField();
+        cajaId = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -62,35 +67,48 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setText("Limpiar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
             .addGroup(layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cajaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41))
+                .addComponent(cajaId, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cajaCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cajaId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(135, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,72 +116,44 @@ public class FrmEliminarCita extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        if (cajaCedula.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Ingrese el numero de cedula");
+        if (cajaId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese la ID a eliminar");
 
         } else {
             
-            usuario=new Usuario();
+            cita=new Cita();
 
             try {
-                usuario.setCedula(Integer.parseInt(this.cajaCedula.getText()));
-                if(ctu.eliminar(usuario)){
+                cita.setId(Integer.parseInt(this.cajaId.getText()));
+                if(ctlc.deleteCitas(cita)){
                     
                     
-                    JOptionPane.showMessageDialog(this, "Usuario eliminado");
+                    JOptionPane.showMessageDialog(this, "Cita eliminada");
                 }else{
                       
-                    JOptionPane.showMessageDialog(this, "Usuario NO eliminado");
+                    JOptionPane.showMessageDialog(this, "Cita NO eliminada");
                 }
 
             } catch (Exception e) {
                   
-                    JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR USUARIO DEVIDO A "+e.getMessage());
+                    JOptionPane.showMessageDialog(this, "ERROR AL ELIMINAR Cita DEVIDO A "+e.getMessage());
 
             }
         }
-//                
-//        if(!this.cajaCedula.getText().equals("")){    
-//            
-//            usuario = new Usuario();
-//            
-//            usuario.setCedula(Integer.valueOf( this.cajaCedula.getText() ));
-//    
-//            
-//            
-//            if(cu.buscarUsuario(usuario)!= null)
-//            {
-//                usuario = cu.buscarUsuario(usuario);
-//                
-//                if(cu.listarUsuarios().size()> 1 && cu.eliminar(usuario) )
-//                    
-//                    
-//                {
-//                    JOptionPane.showMessageDialog(this, "Se elimino Usuario correctamente");
-//                   
-//                    
-//                    
-//                    usuario=null;
-//                    
-//                    
-//                    
-//                    
-//                    this.limpiarCajas();
-//                }else
-//                {
-//                    JOptionPane.showMessageDialog(this,"El Sistema no se puede quedar sin usuarios");
-//                }
-//            }
-//            
-//        }
+
         
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+      limpiarCajas();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField cajaCedula;
+    private javax.swing.JTextField cajaId;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables

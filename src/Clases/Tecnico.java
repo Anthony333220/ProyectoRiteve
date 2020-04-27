@@ -41,6 +41,7 @@ public class Tecnico {
     public int getCedula() {
         return cedula;
     }
+    
 
     public void setCedula(int cedula) {
         this.cedula = cedula;
@@ -78,6 +79,12 @@ public class Tecnico {
         this.correoElectronico = correoElectrónico;
     }
 
+    
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
     public double getSalario() {
         return salario;
     }
@@ -85,5 +92,10 @@ public class Tecnico {
     public void setSalario(double salario) {
         this.salario = salario;
     }
+
+  
+    
+
+
 
 }
